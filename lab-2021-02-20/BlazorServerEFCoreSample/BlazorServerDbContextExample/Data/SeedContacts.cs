@@ -45,26 +45,49 @@ namespace BlazorServerDbContextExample.Data
         /// <summary>
         /// Combined with things for last names.
         /// </summary>
+        //private readonly string[] _colors = new[]
+        //{
+        //    "Blue",
+        //    "Aqua",
+        //    "Red",
+        //    "Green",
+        //    "Orange",
+        //    "Yellow",
+        //    "Black",
+        //    "Violet",
+        //    "Brown",
+        //    "Crimson",
+        //    "Gray",
+        //    "Cyan",
+        //    "Magenta",
+        //    "White",
+        //    "Gold",
+        //    "Pink",
+        //    "Lavender"
+        //};
+        
+
         private readonly string[] _colors = new[]
         {
-            "Blue",
-            "Aqua",
-            "Red",
-            "Green",
-            "Orange",
-            "Yellow",
-            "Black",
-            "Violet",
-            "Brown",
-            "Crimson",
-            "Gray",
-            "Cyan",
-            "Magenta",
-            "White",
-            "Gold",
-            "Pink",
-            "Lavender"
+            "赵",
+            "钱",
+            "孙",
+            "李",
+            "周",
+            "吴",
+            "郑",
+            "王",
+            "冯",
+            "陈",
+            "褚",
+            "卫",
+            "蒋",
+            "沈",
+            "韩",
+            "杨",
+            "朱"
         };
+
 
         /// <summary>
         /// Also helpful for names.
@@ -193,7 +216,9 @@ namespace BlazorServerDbContextExample.Data
             var contact = new Contact
             {
                 FirstName = RandomOne(_gems),
-                LastName = $"{RandomOne(_colors)}{RandomOne(_things)}",
+//                LastName = $"{RandomOne(_colors)}{RandomOne(_things)}",
+                LastName = $"{RandomOne(_colors)}",
+
                 Phone = $"({_random.Next(100, 999)})-555-{_random.Next(1000, 9999)}",
                 Street = $"{_random.Next(1, 99999)} {_random.Next(1, 999)}" +
                 $" {RandomOne(_streets)} {RandomOne(_streetTypes)} {RandomOne(_directions)}",

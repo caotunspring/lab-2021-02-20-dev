@@ -25,9 +25,15 @@ namespace BlazorServerDbContextExample
 
             // register factory and configure the options
             #region snippet1
-            services.AddDbContextFactory<ContactContext>(opt =>
-                opt.UseSqlite($"Data Source={nameof(ContactContext.ContactsDb)}.db"));
+            //services.AddDbContextFactory<ContactContext>(opt =>
+            //    opt.UseSqlite($"Data Source={nameof(ContactContext.ContactsDb)}.db"));
             #endregion
+
+            services.AddDbContextFactory<ContactContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+
+
 
             // pager
             services.AddScoped<IPageHelper, PageHelper>();

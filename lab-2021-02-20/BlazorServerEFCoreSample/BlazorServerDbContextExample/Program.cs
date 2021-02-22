@@ -22,12 +22,12 @@ namespace BlazorServerDbContextExample
                 .CreateScope()
                 .ServiceProvider;
             var options = sp.GetRequiredService<DbContextOptions<ContactContext>>();
-            await EnsureDbCreatedAndSeedWithCountOfAsync(options, 500);
+            await EnsureDbCreatedAndSeedWithCountOfAsync(options, 369);
             // back to your regularly scheduled program
 
             await host.RunAsync();
         }
-        
+
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
@@ -51,6 +51,7 @@ namespace BlazorServerDbContextExample
             using var context = new ContactContext(builder.Options);
             // result is true if the database had to be created
             if (await context.Database.EnsureCreatedAsync())
+            //if (true)
             {
                 var seed = new SeedContacts();
                 await seed.SeedDatabaseWithContactCountOfAsync(context, count);
