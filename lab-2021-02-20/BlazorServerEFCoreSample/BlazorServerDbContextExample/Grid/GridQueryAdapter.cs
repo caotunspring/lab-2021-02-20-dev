@@ -114,6 +114,7 @@ namespace BlazorServerDbContextExample.Grid
                 var filter = _filterQueries[_controls.FilterColumn];
                 sb.Append($"Filter: '{_controls.FilterColumn}' ");
                 root = filter(root);
+                var strSql = root.ToQueryString(); //我加上的一行查看SQL語句
             }
 
             // apply the expression
