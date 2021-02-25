@@ -4,25 +4,33 @@
 @inject NavigationManager Nav
 @inject IPageHelper PageHelper
 
-@if (Contact != null)
-{
-    <ContactForm Busy="@Busy" 
-                   Contact="@Contact" 
-                   IsAdd="true"
-                   CancelRequest="Cancel"
-                   ValidationResult="@(async (success) => await ValidationResultAsync(success))" />
-}
-@if (Success)
-{
-    <br />
-    <div class="alert alert-success">The contact was successfully added.</div>
-}
-@if (Error)
-{
-    <br />
-    <div class="alert alert-danger">Failed to update the contact (@ErrorMessage).</div>
-}
 
+<AuthorizeView>
+    <Authorized>
+        @if (Contact != null)
+        {
+            <ContactForm Busy="@Busy"
+                            Contact="@Contact"
+                            IsAdd="true"
+                            CancelRequest="Cancel"
+                            ValidationResult="@(async (success) => await ValidationResultAsync(success))" />
+        }
+        @if (Success)
+        {
+            <br />
+            <div class="alert alert-success">The contact was successfully added.</div>
+        }
+        @if (Error)
+        {
+            <br />
+            <div class="alert alert-danger">Failed to update the contact (@ErrorMessage).</div>
+        }
+    </Authorized>
+    <NotAuthorized>
+        <h1>Authentication Failure!</h1>
+        <p>You're not signed in.</p>
+    </NotAuthorized>
+</AuthorizeView>
 @code {
     /// <summary>
     /// New <see cref="Contact"/>.

@@ -3,21 +3,23 @@
 @if (CurrentContact != null)
 {
     <div class="row contact-detail">
-        <div class="col-1 text-right">
-            <a title="Edit" href="edit/@CurrentContact.Id">
-                &nbsp;📝&nbsp;
-            </a>
-            @if (CanDelete)
-            {
-                <span @onclick="DeleteRequestAsync"
-                      title="Delete" class="clickable red">❌</span>
-            }
-            else
-            {
-                <span>&nbsp;</span>
-            }
-            &nbsp;
-        </div>
+        <AuthorizeView>
+            <div class="col-1 text-right">
+                <a title="Edit" href="edit/@CurrentContact.Id">
+                    &nbsp;📝&nbsp;
+                </a>
+                @if (CanDelete)
+                {
+                    <span @onclick="DeleteRequestAsync"
+                          title="Delete" class="clickable red">❌</span>
+                }
+                else
+                {
+                    <span>&nbsp;</span>
+                }
+                &nbsp;
+            </div>
+        </AuthorizeView>
         <div class="col-2">
             <a href="@ViewLink" alt="View Details"
                title="View Details">

@@ -37,7 +37,12 @@
         </div>
         <div class="row">&nbsp;</div>
         <div class="row contact-header">
-            <div class="col-1">&nbsp;</div>
+
+            <AuthorizeView>
+                <div class="col-1">&nbsp;</div>
+            </AuthorizeView>
+
+
             <div class="col-2"
                  @onclick="@(async ()=>await ToggleAsync(ContactFilterColumns.Name))">
                 <SortIndicator Column="@(ContactFilterColumns.Name)" />&nbsp;Name
