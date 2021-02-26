@@ -1,7 +1,18 @@
 ﻿<CascadingAuthenticationState>
     <Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
         <Found Context="routeData">
-            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+            <AuthorizeRouteView RouteData="@routeData"
+                                DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    <h1>沒有授權不能訪問</h1>
+                    <p>當前的用戶不能訪問這頁面</p>
+                    <p>或許應該用另外的帳號登入</p>
+                </NotAuthorized>
+                <Authorizing>
+                    <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+
+                </Authorizing>
+            </AuthorizeRouteView>
         </Found>
         <NotFound>
             <LayoutView Layout="@typeof(MainLayout)">

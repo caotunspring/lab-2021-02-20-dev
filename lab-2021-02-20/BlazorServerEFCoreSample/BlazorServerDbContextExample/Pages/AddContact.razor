@@ -1,5 +1,5 @@
 ﻿@page "/add"
-
+@attribute [Authorize]
 @inject IDbContextFactory<ContactContext> DbFactory
 @inject NavigationManager Nav
 @inject IPageHelper PageHelper
@@ -10,10 +10,10 @@
         @if (Contact != null)
         {
             <ContactForm Busy="@Busy"
-                            Contact="@Contact"
-                            IsAdd="true"
-                            CancelRequest="Cancel"
-                            ValidationResult="@(async (success) => await ValidationResultAsync(success))" />
+                         Contact="@Contact"
+                         IsAdd="true"
+                         CancelRequest="Cancel"
+                         ValidationResult="@(async (success) => await ValidationResultAsync(success))" />
         }
         @if (Success)
         {
